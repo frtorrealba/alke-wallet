@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Alke Wallet</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="container-fluid vh-100">
+        <div class="row h-100">
+            <!-- Sección izquierda - Información -->
+            <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center bg-primary text-white">
+                <div class="text-center p-5">
+                    <i class="bi bi-wallet2 display-1 mb-4"></i>
+                    <h2 class="mb-3">Bienvenido a Alke Wallet</h2>
+                    <p class="lead">Gestiona tus finanzas de forma segura y sencilla</p>
+                </div>
+            </div>
+            
+            <!-- Sección derecha - Formulario de Login -->
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div class="login-form-container w-100" style="max-width: 400px;">
+                    <div class="text-center mb-4">
+                        <h3 class="fw-bold">Iniciar Sesión</h3>
+                        <p class="text-muted">Ingresa tus credenciales</p>
+                    </div>
+                    
+                    <!-- Formulario de Login -->
+                    <form id="loginForm" novalidate>
+                        <!-- Campo de Email/Usuario -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email o Usuario</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-person"></i>
+                                </span>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="email" 
+                                    placeholder="usuario@ejemplo.com"
+                                    required
+                                >
+                            </div>
+                            <div class="invalid-feedback">
+                                Por favor ingresa tu email o usuario.
+                            </div>
+                        </div>
+                        
+                        <!-- Campo de Contraseña -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-lock"></i>
+                                </span>
+                                <input 
+                                    type="password" 
+                                    class="form-control" 
+                                    id="password" 
+                                    placeholder="Tu contraseña"
+                                    required
+                                >
+                            </div>
+                            <div class="invalid-feedback">
+                                Por favor ingresa tu contraseña.
+                            </div>
+                        </div>
+                        
+                        <!-- Recordar sesión -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">
+                                Recordar mi sesión
+                            </label>
+                        </div>
+                        
+                        <!-- Mensaje de error -->
+                        <div id="errorMessage" class="alert alert-danger d-none" role="alert">
+                            <i class="bi bi-exclamation-triangle"></i>
+                            Credenciales incorrectas. Intenta nuevamente.
+                        </div>
+                        
+                        <!-- Botón de Login -->
+                        <button type="submit" class="btn btn-primary w-100 py-2 mb-3">
+                            <i class="bi bi-box-arrow-in-right"></i> Ingresar
+                        </button>
+                        
+                        <!-- Enlaces adicionales -->
+                        <div class="text-center">
+                            <a href="#" class="text-decoration-none small">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        
+                        <!-- Enlace a registro -->
+                        <div class="text-center mt-3">
+                            <p class="text-muted mb-0">¿No tienes cuenta?</p>
+                            <a href="register.html" class="text-decoration-none fw-bold">Créate una cuenta</a>
+                        </div>
+                    </form>
+                    
+                    <!-- Credenciales de prueba -->
+                    <div class="mt-4 p-3 bg-light rounded">
+                        <p class="small mb-2 fw-bold">Credenciales de prueba:</p>
+                        <p class="small mb-1">Usuario: <code>admin</code></p>
+                        <p class="small mb-0">Contraseña: <code>1234</code></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../js/login.js"></script>
+</body>
+</html>

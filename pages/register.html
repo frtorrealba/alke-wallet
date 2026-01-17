@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Alke Wallet</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="container-fluid vh-100">
+        <div class="row h-100">
+            <!-- Sección izquierda - Información -->
+            <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center bg-primary text-white">
+                <div class="text-center p-5">
+                    <i class="bi bi-wallet2 display-1 mb-4"></i>
+                    <h2 class="mb-3">Únete a Alke Wallet</h2>
+                    <p class="lead">Crea tu cuenta y comienza a gestionar tus finanzas de forma segura</p>
+                    <div class="mt-4">
+                        <div class="d-flex align-items-center justify-content-center mb-3">
+                            <i class="bi bi-shield-check fs-3 me-3"></i>
+                            <span>Seguridad garantizada</span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center mb-3">
+                            <i class="bi bi-lightning-charge fs-3 me-3"></i>
+                            <span>Transacciones rápidas</span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <i class="bi bi-phone fs-3 me-3"></i>
+                            <span>Disponible 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección derecha - Formulario de Registro -->
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div class="register-form-container w-100 p-4" style="max-width: 500px;">
+                    <div class="text-center mb-4">
+                        <h3 class="fw-bold">Crear Cuenta</h3>
+                        <p class="text-muted">Completa tus datos para registrarte</p>
+                    </div>
+                    
+                    <!-- Formulario de Registro -->
+                    <form id="registerForm" novalidate>
+                        <!-- Nombre Completo -->
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">Nombre Completo</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-person"></i>
+                                </span>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="fullName" 
+                                    placeholder="Juan Pérez"
+                                    required
+                                    minlength="3"
+                                >
+                            </div>
+                            <div class="invalid-feedback">
+                                Por favor ingresa tu nombre completo (mínimo 3 caracteres).
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Correo Electrónico</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-envelope"></i>
+                                </span>
+                                <input 
+                                    type="email" 
+                                    class="form-control" 
+                                    id="registerEmail" 
+                                    placeholder="usuario@ejemplo.com"
+                                    required
+                                >
+                            </div>
+                            <div class="invalid-feedback">
+                                Por favor ingresa un email válido.
+                            </div>
+                        </div>
+
+                        <!-- Usuario -->
+                        <div class="mb-3">
+                            <label for="registerUsername" class="form-label">Nombre de Usuario</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-at"></i>
+                                </span>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="registerUsername" 
+                                    placeholder="usuario123"
+                                    required
+                                    minlength="4"
+                                    pattern="^[a-zA-Z0-9_]+$"
+                                >
+                            </div>
+                            <div class="invalid-feedback">
+                                El usuario debe tener al menos 4 caracteres (solo letras, números y guion bajo).
+                            </div>
+                            <small class="text-muted">Solo letras, números y guion bajo (_)</small>
+                        </div>
+                        
+                        <!-- Contraseña -->
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Contraseña</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-lock"></i>
+                                </span>
+                                <input 
+                                    type="password" 
+                                    class="form-control" 
+                                    id="registerPassword" 
+                                    placeholder="Mínimo 6 caracteres"
+                                    required
+                                    minlength="6"
+                                >
+                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                            <div class="invalid-feedback">
+                                La contraseña debe tener al menos 6 caracteres.
+                            </div>
+                            <!-- Indicador de fortaleza -->
+                            <div class="progress mt-2" style="height: 5px;">
+                                <div id="passwordStrength" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                            </div>
+                            <small id="passwordHint" class="text-muted"></small>
+                        </div>
+
+                        <!-- Confirmar Contraseña -->
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-lock-fill"></i>
+                                </span>
+                                <input 
+                                    type="password" 
+                                    class="form-control" 
+                                    id="confirmPassword" 
+                                    placeholder="Repite tu contraseña"
+                                    required
+                                >
+                            </div>
+                            <div class="invalid-feedback">
+                                Las contraseñas no coinciden.
+                            </div>
+                        </div>
+                        
+                        <!-- Términos y condiciones -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="acceptTerms" required>
+                            <label class="form-check-label" for="acceptTerms">
+                                Acepto los <a href="#" class="text-decoration-none">términos y condiciones</a>
+                            </label>
+                            <div class="invalid-feedback">
+                                Debes aceptar los términos y condiciones.
+                            </div>
+                        </div>
+                        
+                        <!-- Mensajes -->
+                        <div id="registerMessage" class="alert d-none" role="alert"></div>
+                        
+                        <!-- Botón de Registro -->
+                        <button type="submit" class="btn btn-primary w-100 py-2 mb-3">
+                            <i class="bi bi-person-plus"></i> Crear Cuenta
+                        </button>
+                        
+                        <!-- Enlace a Login -->
+                        <div class="text-center">
+                            <p class="text-muted mb-0">¿Ya tienes cuenta?</p>
+                            <a href="login.html" class="text-decoration-none fw-bold">Inicia sesión aquí</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../js/register.js"></script>
+</body>
+</html>
